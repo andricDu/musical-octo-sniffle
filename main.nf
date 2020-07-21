@@ -12,7 +12,6 @@ process sayHello {
     """
     echo '$workflow.runName'
     echo '$x world!'
-    cat /tmp/file.txt
     sleep 120
     """
 }
