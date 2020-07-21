@@ -4,7 +4,7 @@ cheers = Channel.from 'Bonjour', 'Ciao', 'Hello', 'Hola'
 
 process sayHello {
   
-  pod = [secret: '$workflow.runName', mountPath: '/tmp/file.txt']
+  pod = [secret: workflow.runName, mountPath: '/tmp/file.txt']
 
   echo true
   input: 
