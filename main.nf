@@ -3,7 +3,7 @@
 cheers = Channel.from 'Bonjour', 'Ciao', 'Hello', 'Hola'
 
 process sayHello {
-  pod secret: workflow.runName, mountPath: '/tmp/file.txt'
+  pod secret: workflow.runName, mountPath: '/tmp/access'
 
   echo true
   input: 
@@ -12,7 +12,8 @@ process sayHello {
     """
     echo '$workflow.runName'
     echo '$x world!'
-    ls -l /tmp/file.txt
+    ls -l /tmp/access
+    cat /tmp/access/apikey
     sleep 120
     """
 }
