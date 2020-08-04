@@ -11,8 +11,6 @@ process sayHello {
     """
     echo '$workflow.runName'
     echo '$x world!'
-    ls -l /tmp/argo
-    cat /tmp/argo/secret
     """
 }
 
