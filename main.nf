@@ -1,9 +1,7 @@
 #!/usr/bin/env nextflow
-nextflow.enable.dsl=2
+nextflow.preview.dsl=2
 
 process sayHello {
-  pod secret: workflow.runName + '-secret', mountPath: '/tmp/argo'
-
   echo true
   input: 
     val x
@@ -11,7 +9,6 @@ process sayHello {
     """
     echo '$workflow.runName'
     echo '$x world!'
-    ls -ls /tmp/argo
     """
 }
 
