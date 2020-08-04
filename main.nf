@@ -8,7 +8,7 @@ process sayHello {
   echo true
   input: 
     val x from cheers
-    env y from path('/tmp/access/secret')
+    env y from path('/tmp/argo/secret')
   script:
     """
     echo '$workflow.runName'
