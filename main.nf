@@ -3,17 +3,17 @@
 cheers = Channel.from 'Bonjour', 'Ciao', 'Hello', 'Hola'
 
 process sayHello {
-  pod secret: workflow.runName, mountPath: '/tmp/access'
+  pod secret: workflow.runName + '-secret', mountPath: '/tmp/argo'
 
   echo true
   input: 
     val x from cheers
+    env y from path('/tmp/access/secret')
   script:
     """
     echo '$workflow.runName'
     echo '$x world!'
-    ls -l /tmp/access
-    cat /tmp/access/apikey
-    sleep 120
+    ls -l /tmp/argo
+    cat /tmp/argo/secret
     """
 }
