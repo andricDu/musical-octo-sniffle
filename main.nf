@@ -1,14 +1,12 @@
 #!/usr/bin/env nextflow
-
-cheers = Channel.from 'Bonjour', 'Ciao', 'Hello', 'Hola'
+nextflow.enable.dsl=2
 
 process sayHello {
   pod secret: workflow.runName + '-secret', mountPath: '/tmp/argo'
 
   echo true
   input: 
-    val x from cheers
-    env y from path('/tmp/argo/secret')
+    val x
   script:
     """
     echo '$workflow.runName'
@@ -16,4 +14,10 @@ process sayHello {
     ls -l /tmp/argo
     cat /tmp/argo/secret
     """
+}
+
+
+workflow {
+  cheers = Channel.from 'Bonjour', 'Ciao', 'Hello', 'Hola'
+  sayHello(cheers)
 }
