@@ -9,13 +9,15 @@ process sayHello {
     val x
 
   shell:
-    """
+    '''
     echo '!{workflow.runName}'
     echo '!{x} world!'
     ls -ls /tmp/!{workflow.runName}
     export FOO=`cat /tmp/!{workflow.runName}/secret`
+    export BAR='lalala'
+    echo $BAR
     echo $FOO
-    """
+    '''
 }
 
 
