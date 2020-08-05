@@ -7,14 +7,14 @@ process sayHello {
   echo true
   input: 
     val x
-  script:
-    """
-    echo '$workflow.runName'
-    echo '$x world!'
-    ls -ls /tmp/$workflow.runName
-    export FOO=`cat /tmp/$workflow.runName/secret`
-    echo $FOO
-    """
+
+  """
+  echo '${$workflow.runName}'
+  echo '${x} world!'
+  ls -ls /tmp/${workflow.runName}
+  export FOO=`cat /tmp/${workflow.runName}/secret`
+  echo $FOO
+  """
 }
 
 
