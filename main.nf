@@ -12,6 +12,8 @@ process sayHello {
     echo '$workflow.runName'
     echo '$x world!'
     ls -ls /tmp/$workflow.runName
+    export FOO=`cat /tmp/$workflow.runName/secret`
+    echo $FOO
     """
 }
 
