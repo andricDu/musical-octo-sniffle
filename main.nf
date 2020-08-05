@@ -2,7 +2,7 @@
 nextflow.preview.dsl=2
 
 process sayHello {
-  pod secret: workflow.runName + '-secret', mountPath: '/tmp/argo'
+  pod secret: workflow.runName + '-secret', mountPath: '/tmp/' + workflow.runName
 
   echo true
   input: 
@@ -11,7 +11,7 @@ process sayHello {
     """
     echo '$workflow.runName'
     echo '$x world!'
-    ls -ls /tmp/argo
+    ls -ls /tmp/$workflow.runName
     """
 }
 
