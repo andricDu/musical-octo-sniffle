@@ -35,7 +35,6 @@ process songGetAnalysis {
     export CLIENT_STUDY_ID=${study_id}
     export CLIENT_ACCESS_TOKEN=`base64 -d /tmp/${workflow.runName}/secret`
     cat /tmp/${workflow.runName}/secret
-    base64 -d /tmp/${workflow.runName}/secret | echo
     sing search -a ${analysis_id} > ${analysis_id}.analysis.json
     cat ${analysis_id}.analysis.json
     """
