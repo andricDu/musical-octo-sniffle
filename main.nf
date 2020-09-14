@@ -5,7 +5,7 @@ include songGetAnalysis as songGet from './modules/song_get_analysis'
 
 
 process sayHello {
-  pod secret: params.rdpc_secret_name, mountPath: '/tmp/' + rdpc_secret
+  pod secret: params.rdpc_secret_name, mountPath: '/tmp/rdpc_secret'
 
   echo true
   input: 
