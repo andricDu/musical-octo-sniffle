@@ -5,7 +5,7 @@ include songGetAnalysis as songGet from './modules/song_get_analysis'
 
 
 process sayHello {
-  pod secret: params.rdpc-secret-name, mountPath: '/tmp/' + rdpc-secret
+  pod secret: params.rdpc_secret_name, mountPath: '/tmp/' + rdpc_secret
 
   echo true
   input: 
@@ -15,8 +15,8 @@ process sayHello {
     '''
     echo '!{workflow.runName}'
     echo '!{x} world!'
-    ls -ls /tmp/rdpc-secret
-    export FOO=`cat /tmp/rdpc-secret/secret`
+    ls -ls /tmp/rdpc_secret
+    export FOO=`cat /tmp/rdpc_secret/secret`
     export BAR='lalala'
     echo $BAR
     echo $FOO
